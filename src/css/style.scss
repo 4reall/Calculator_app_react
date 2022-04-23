@@ -47,6 +47,19 @@ input::-webkit-inner-spin-button {
 }
 
 .app {
-	width: min(80%, 780px);
-	margin: 0 auto;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	padding: 2rem 0;
+	background: rgb(73,77,166);
+	background: linear-gradient(36deg, rgba(73,77,166,1) 0%, rgba(0,212,255,1) 100%);
+}
+button {
+	cursor: pointer;
+}
+@media only screen and (max-width: 50rem) {
+	.app {
+		display: block;
+		padding: 0;
+	}
 }

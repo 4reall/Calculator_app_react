@@ -1,8 +1,9 @@
-import Controls from '../controls/Controls';
+import { useState } from "react";
+import Calculator from "../Calculator/Calculator";
 function App() {
 	return (
 		<div className="app">
-			<Controls />
+			<Calculator />
 		</div>
 	);
 }
