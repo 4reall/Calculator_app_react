@@ -1,5 +1,5 @@
 import './calculator.scss';
-import { useReducer, useState } from 'react';
+import { useCallback, useEffect, useReducer, useState } from 'react';
 import Button from './Button';
 import { btns, BTNS_ACTION } from '../../buttonsConfig/buttonsConfig';
 import { logDOM } from '@testing-library/react';
@@ -116,18 +116,40 @@ function calc({ currentOperand, previousOperand, operation }) {
 const Calculator = ({ setOutput }) => {
 	const [{ previousOperand, currentOperand, operation }, dispatch] =
 		useReducer(reducer, {});
+
+	useEffect(() => {
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, []);
+
+	const handleKeyDown = useCallback((e) => {
+		e.preventDefault();
+		let key = e.key;
+		switch (key) {
+			case 'Backspace':
+				key = 'DEL';
+				break;
+			case 'Enter':
+				key = '=';
+				break;
+			case '/':
+				key = '÷';
+				break;
+			case '*':
+				key = '×';
+				break;
+		}
+		const currentBtn = btns.find((btn) => btn.display === key);
+		if (currentBtn) {
+			dispatch({
+				type: currentBtn.action,
+				payload: key,
+			});
+		}
+	}, []);
+
 	return (
-		<div
-			// onKeyDown={(e) =>
-			// 	e.key === btn.display
-			// 		? dispatch({
-			// 				type: btn.action,
-			// 				payload: btn.display,
-			// 		  })
-			// 		: null
-			// }
-			className="grid"
-		>
+		<div className="grid">
 			<div className="output">
 				<div className="output__previous">
 					{formatOperand(previousOperand)} {operation}
@@ -142,6 +164,7 @@ const Calculator = ({ setOutput }) => {
 						dispatch({ type: btn.action, payload: btn.display })
 					}
 					key={index}
+					tabIndex={-1}
 					className={btn.class}
 				>
 					{btn.display}

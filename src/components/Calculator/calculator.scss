@@ -17,6 +17,7 @@
 		border: none;
 		background-color: $numbers-color;
 		color: $text-color;
+		outline: none;
 		&:active {
 			background-color:  transparentize($numbers-color, 0.5);
 		}
