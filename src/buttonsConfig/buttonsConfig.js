@@ -4,7 +4,6 @@ export const BTNS_ACTION = {
 	CLEAR: 'CLEAR',
 	CALC: 'CALC',
 	EVALUATE: 'EVALUATE',
-	THEME: 'THEME',
 };
 export const btns = [
 	{
