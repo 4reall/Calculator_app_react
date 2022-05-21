@@ -13,8 +13,6 @@ const Calculator = () => {
 	}, []);
 
 	const handleKeyDown = useCallback((e) => {
-		// e.preventDefault();
-		console.log(e.key);
 		let key = e.key;
 		switch (key) {
 			case 'Backspace':
@@ -49,7 +47,6 @@ const Calculator = () => {
 		if (decimal == null) return INTEGER_FORMATTER.format(integer);
 		return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
 	};
-	// onKeyDown = { handleKeyDown };
 	return (
 		<div className="grid">
 			<div className="output">

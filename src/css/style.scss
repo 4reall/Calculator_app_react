@@ -50,6 +50,7 @@ input::-webkit-inner-spin-button {
 	height: 100vh;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	padding: 2rem 0;
 	background: rgb(73,77,166);
 	background: linear-gradient(36deg, rgba(73,77,166,1) 0%, rgba(0,212,255,1) 100%);
@@ -59,7 +60,7 @@ button {
 }
 @media only screen and (max-width: 35rem) {
 	.app {
-		display: block;
-		padding: 0;
+		padding: 0.5rem;
+
 	}
 }

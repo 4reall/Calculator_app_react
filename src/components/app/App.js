@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Calculator from "../Calculator/Calculator";
+import Calculator from '../Calculator/Calculator';
+
 function App() {
 	return (
 		<div className="app">
